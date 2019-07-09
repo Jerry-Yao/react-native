@@ -6,25 +6,16 @@
  * @flow
  */
 
-import React, { Fragment, Component } from "react";
-import { TabNavigator } from "react-native-tab-navigator";
+import React, { Component } from 'react';
 import {
-  SafeAreaView,
+  AppRegistry,
   StyleSheet,
-  ScrollView,
-  View,
   Text,
-  StatusBar,
+  View,
   Image
-} from "react-native";
+} from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions
-} from "react-native/Libraries/NewAppScreen";
+import TabNavigator from 'react-native-tab-navigator';
 
 export default class imocc_gp extends Component {
   constructor(props) {
@@ -39,27 +30,44 @@ export default class imocc_gp extends Component {
       <View style={styles.container}>
         <TabNavigator>
           <TabNavigator.Item
-            selected={this.state.selectedTab === 'home'}
-          title="Home"
-            renderIcon={() => <Image source={'./res/images/fire (1).png'} />}
-            renderSelectedIcon={() => (
-              <Image source={'./res/images/fire.png'} />
-            )}
+            selected={this.state.selectedTab === 'tab_popular'}
+            selectedTitleStyle={{color:'red'}}
+            title="最热"
+            renderIcon={() => <Image style={styles.image} source={require('./res/images/fire.png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'red'}]} source={require('./res/images/fire (1).png')} />}
             badgeText="1"
-            onPress={() => this.setState({ selectedTab: 'home' })}
-          >
-            <View style={styles.page1}>page1</View>
+            onPress={() => this.setState({ selectedTab: 'tab_popular' })}>
+            <View style={styles.page1}></View>
           </TabNavigator.Item>
-        <TabNavigator.Item
-            selected={this.state.selectedTab === "profile"}
-            title="Profile"
-            renderIcon={() => <Image source={"./res/images/fire (1).png"} />}
-            renderSelectedIcon={() => (
-              <Image source={"./res/images/fire.png"} />
-            )}
-            onPress={() => this.setState({ selectedTab: "profile" })}
-          >
-            <View style={styles.page2}>page1</View>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'tab_treding'}
+            selectedTitleStyle={{color:'yellow'}}
+            title="趋势"
+            renderIcon={() => <Image style={styles.image} source={require('./res/images/treding.png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'yellow'}]} source={require('./res/images/treding.png')} />}
+            // renderBadge={() => <CustomBadgeView />}
+            onPress={() => this.setState({ selectedTab: 'tab_treding' })}>
+            <View style={styles.page2}></View>
+          </TabNavigator.Item>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'tab_favorite'}
+            selectedTitleStyle={{color:'red'}}
+            title="收藏"
+            renderIcon={() => <Image style={styles.image} source={require('./res/images/Favorite.png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'red'}]} source={require('./res/images/Favorite.png')} />}
+            badgeText="1"
+            onPress={() => this.setState({ selectedTab: 'tab_favorite' })}>
+            <View style={styles.page1}></View>
+          </TabNavigator.Item>
+          <TabNavigator.Item
+            selected={this.state.selectedTab === 'tab_my'}
+            selectedTitleStyle={{color:'yellow'}}
+            title="我的"
+            renderIcon={() => <Image style={styles.image} source={require('./res/images/profile_light.png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'yellow'}]} source={require('./res/images/profile_light (1).png')} />}
+            // renderBadge={() => <CustomBadgeView />}
+            onPress={() => this.setState({ selectedTab: 'tab_my' })}>
+            <View style={styles.page2}></View>
           </TabNavigator.Item>
         </TabNavigator>
       </View>
@@ -69,10 +77,10 @@ export default class imocc_gp extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     // justifyContent:'center',
     // alignItems:'center',
-    backgroundColor:'#F5FCFF',
+    backgroundColor: '#F5FCFF'
   },
   page1: {
     flex: 1,
@@ -81,6 +89,10 @@ const styles = StyleSheet.create({
   page2: {
     flex: 1,
     backgroundColor: 'yellow'
+  },
+  image: {
+    height: 22,
+    width: 22
   }
 });
 // const App = () => {
