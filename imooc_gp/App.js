@@ -12,59 +12,75 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  Navigator
 } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator';
+import Boy from './js/Boy'
+import PopularPage from './js/pop/PopularPage'
 
 export default class imocc_gp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'home'
+      selectedTab: 'tab_popular'
     };
   }
 
   render() {
     return (
       <View style={styles.container}>
+        {/* <Navigator
+            scene
+        ></Navigator> */}
+        {/* <Navigator 
+            initialRoute = {{
+              component:  Boy
+            }}
+            renderScene = {(route,navigator)=>{
+              let Component = route.component;
+              return <Component navigator = {navigator} {...route.params}/>
+            }}
+        ></Navigator> */}
         <TabNavigator>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tab_popular'}
-            selectedTitleStyle={{color:'red'}}
+            selectedTitleStyle={{color:'blue'}}
             title="最热"
             renderIcon={() => <Image style={styles.image} source={require('./res/images/fire.png')} />}
-            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'red'}]} source={require('./res/images/fire (1).png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'blue'}]} source={require('./res/images/fire (1).png')} />}
             badgeText="1"
             onPress={() => this.setState({ selectedTab: 'tab_popular' })}>
-            <View style={styles.page1}></View>
+            {/* <View style={styles.page1}></View> */}
+            <PopularPage/>
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tab_treding'}
-            selectedTitleStyle={{color:'yellow'}}
+            selectedTitleStyle={{color:'blue'}}
             title="趋势"
             renderIcon={() => <Image style={styles.image} source={require('./res/images/treding.png')} />}
-            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'yellow'}]} source={require('./res/images/treding.png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'blue'}]} source={require('./res/images/treding.png')} />}
             // renderBadge={() => <CustomBadgeView />}
             onPress={() => this.setState({ selectedTab: 'tab_treding' })}>
             <View style={styles.page2}></View>
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tab_favorite'}
-            selectedTitleStyle={{color:'red'}}
+            selectedTitleStyle={{color:'blue'}}
             title="收藏"
             renderIcon={() => <Image style={styles.image} source={require('./res/images/Favorite.png')} />}
-            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'red'}]} source={require('./res/images/Favorite.png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'blue'}]} source={require('./res/images/Favorite.png')} />}
             badgeText="1"
             onPress={() => this.setState({ selectedTab: 'tab_favorite' })}>
             <View style={styles.page1}></View>
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'tab_my'}
-            selectedTitleStyle={{color:'yellow'}}
+            selectedTitleStyle={{color:'blue'}}
             title="我的"
             renderIcon={() => <Image style={styles.image} source={require('./res/images/profile_light.png')} />}
-            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'yellow'}]} source={require('./res/images/profile_light (1).png')} />}
+            renderSelectedIcon={() => <Image style={[styles.image,{tintColor:'blue'}]} source={require('./res/images/profile_light (1).png')} />}
             // renderBadge={() => <CustomBadgeView />}
             onPress={() => this.setState({ selectedTab: 'tab_my' })}>
             <View style={styles.page2}></View>
@@ -84,11 +100,11 @@ const styles = StyleSheet.create({
   },
   page1: {
     flex: 1,
-    backgroundColor: 'red'
+    backgroundColor: 'blue'
   },
   page2: {
     flex: 1,
-    backgroundColor: 'yellow'
+    backgroundColor: 'blue'
   },
   image: {
     height: 22,
